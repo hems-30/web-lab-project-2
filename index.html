@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside>
+    <div class="logo">Mino</div>
+    <button class="add-btn">+</button>
+
+    <!-- Sidebar category dots (hidden initially) -->
+    <div class="sidebar-dot" data-category="Personal" style="background:var(--color-orange);" title="Personal"></div>
+    <div class="sidebar-dot" data-category="Finance" style="background:var(--color-yellow);" title="Finance"></div>
+    <div class="sidebar-dot" data-category="Work" style="background:var(--color-purple);" title="Work"></div>
+    <div class="sidebar-dot" data-category="Health" style="background:var(--color-green);" title="Health"></div>
+    <div class="sidebar-dot" data-category="Class" style="background:var(--color-blue);" title="Class"></div>
+    <div class="sidebar-dot" data-category="Other" style="background:var(--color-pink);" title="Other"></div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <header>
+      <input type="text" class="search-bar" placeholder="Search tasks...">
+      <button class="dark-mode-btn">🌙</button>
+    </header>
+
+    <div class="motto-container">
+      <span>✨</span>
+      <p class="motto-text">Small steps lead to big results. Let's get to work!</p>
+    </div>
+
+    <div class="content-area">
+
+      <!-- ===== CATEGORIES (KEEP THIS) ===== -->
+      <section>
+        <h2 class="section-title">Categories</h2>
+        <div class="category-row">
+          <div class="category" data-category="Work" style="background:var(--color-purple);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/briefcase.png" class="category-icon-img">
+            <h4>Work</h4>
+          </div>
+          <div class="category" data-category="Class" style="background:var(--color-blue);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/graduation-cap.png" class="category-icon-img">
+            <h4>Class</h4>
+          </div>
+          <div class="category" data-category="Personal" style="background:var(--color-orange);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/home.png" class="category-icon-img">
+            <h4>Personal</h4>
+          </div>
+          <div class="category" data-category="Health" style="background:var(--color-green);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/heart-health.png" class="category-icon-img">
+            <h4>Health</h4>
+          </div>
+          <div class="category" data-category="Finance" style="background:var(--color-yellow);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/money-bag.png" class="category-icon-img">
+            <h4>Finance</h4>
+          </div>
+          <div class="category" data-category="Other" style="background:var(--color-pink);">
+            <img src="https://img.icons8.com/ios-filled/50/000000/bookmark-ribbon.png" class="category-icon-img">
+            <h4>Other</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TASKS ===== -->
+      <section>
+        <h2 class="section-title">My Tasks</h2>
+        <div class="task-grid" id="taskGrid"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== TASK CARD TEMPLATE ===== -->
+  <template id="taskCardTemplate">
+  <div class="task-card">
+    <div class="card-header">
+      <input type="text" class="task-title-input" placeholder="Task title" />
+    </div>
+
+    <textarea class="task-desc-input" placeholder="Task description..."></textarea>
+    <div class="card-footer">
+      <div class="status-group">
+        <div class="circle-checkbox"></div>
+        <span class="status-label">Pending</span>
+      </div>
+      <div class="footer-right">
+        <input type="date" class="due-date-input" />
+        <button class="delete-btn">
+          <img src="https://img.icons8.com/ios-filled/50/000000/trash.png" alt="Delete" />
+        </button>
+      </div>
+    </div>
+    <button class="save-btn">Save</button>
+  </div>
+</template>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
