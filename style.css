@@ -83,7 +83,6 @@ main {
 header {
   display: flex;
   justify-content: center;
-  position: relative;
   align-items: center;
   margin-bottom: 25px;
 }
@@ -95,22 +94,6 @@ header {
   border-radius: 14px;
   border: 1px solid #eee;
   background: white;
-}
-
-.dark-mode-btn {
-  padding: 8px 12px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  background: var(--primary-dark);
-  color: var(--text-light);
-  position: absolute;
-  right: 0;
-  transition: transform 0.2s;
-}
-
-.dark-mode-btn:hover {
-  transform: scale(1.05);
 }
 
 .motto-container {

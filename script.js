@@ -2,6 +2,8 @@ const taskGrid = document.getElementById("taskGrid");
 const taskTemplate = document.getElementById("taskCardTemplate").content;
 const addBtn = document.querySelector(".add-btn");
 const sidebarDots = document.querySelectorAll(".sidebar-dot");
+const searchBar = document.querySelector(".search-bar");
+const categoryFolders = document.querySelectorAll(".category");
 const API_URL = "http://localhost:3000/todos";
 
 // ===== Show/hide sidebar dots when + clicked =====
@@ -36,10 +38,11 @@ sidebarDots.forEach(dot => {
       const title = titleInput.value.trim();
       const desc = descInput.value.trim();
       const dueDate = dueInput.value;
+      const category = dot.getAttribute("data-category");
 
       if (!title || !dueDate) return alert("Title & due date required!");
 
-      const newTask = { title, description: desc, dueDate, color, completed: false };
+      const newTask = { category: category, title, description: desc, dueDate, color, completed: false };
 
       // POST to server
       const res = await fetch(API_URL, {
@@ -175,8 +178,14 @@ sidebarDots.forEach(dot => {
 });
 
 // ===== Load tasks from server =====
-async function loadTasks() {
-  const res = await fetch(API_URL);
+async function loadTasks(filterCategory = null) {
+  let url = API_URL;
+  
+  // If we passed a category name, we tell the API to only give us those
+  if (filterCategory) {
+    url = `${API_URL}?category=${filterCategory}`;
+  }
+  const res = await fetch(url);
   const tasks = await res.json();
   taskGrid.innerHTML = "";
 
@@ -292,6 +301,40 @@ async function loadTasks() {
     taskGrid.appendChild(clone);
   });
 }
+
+        // Search Bar
+
+// Add this at the VERY BOTTOM of your script.js
+searchBar.addEventListener("input", (e) => {
+  const term = e.target.value.toLowerCase();
+  const cards = document.querySelectorAll(".task-card");
+
+  cards.forEach(card => {
+      // This looks at the title and description text you created in loadTasks
+      const title = card.querySelector(".task-title")?.innerText.toLowerCase() || "";
+      const desc = card.querySelector(".task-desc")?.innerText.toLowerCase() || "";
+      
+      if (title.includes(term) || desc.includes(term)) {
+          card.style.display = "flex";
+      } else {
+          card.style.display = "none";
+      }
+  });
+});
+
+// ===== ADVANCED FEATURE: Category Filtering =====
+categoryFolders.forEach(folder => {
+  folder.addEventListener("click", () => {
+      const selectedCategory = folder.getAttribute("data-category");
+      
+      // Remove active class from all, add to this one
+      categoryFolders.forEach(f => f.classList.remove("active-folder"));
+      folder.classList.add("active-folder");
+
+      // Load only tasks that match this category
+      loadTasks(selectedCategory);
+  });
+});
 
 // Initial load
 loadTasks();

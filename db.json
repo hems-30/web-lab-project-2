@@ -1,20 +1,24 @@
 {
   "todos": [
     {
-      "id": "9e4f",
-      "title": "Study FSE",
-      "description": "fse mid exam is almost here",
-      "dueDate": "2025-12-01",
-      "color": "var(--color-pink)",
-      "completed": true
+      "id": "b766",
+      "title": "Go to bank",
+      "description": "To get my salary.",
+      "dueDate": "2025-12-30",
+      "dateAdded": "12/25/2025",
+      "category": "Finance",
+      "color": "var(--color-yellow)",
+      "completed": false
     },
     {
-      "id": "e144",
-      "title": "Home",
-      "description": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
-      "dueDate": "2025-12-04",
-      "color": "var(--color-green)",
-      "completed": false
+      "id": "900b",
+      "title": "erty",
+      "description": "am Happy At this time allhamdulila",
+      "dueDate": "2025-12-31",
+      "dateAdded": "12/25/2025",
+      "category": "Work",
+      "color": "var(--color-purple)",
+      "completed": true
     }
   ]
 }
